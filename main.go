@@ -15,13 +15,6 @@ This is a simple program that will allow the user to select a menu option such a
 // The main function prints a menu of items with their corresponding prices.
 // The user can select an option to print the menu.
 func main() {
-	fmt.Println("Please select an option: ")
-	fmt.Println("1) Print Menu")
-
-	in := bufio.NewReader(os.Stdin)
-	choice, _ := in.ReadString('\n')
-	choice = strings.TrimSpace(choice)
-
 	type menuItem struct {
 		name string
 		prices map[string]float64
@@ -33,11 +26,34 @@ func main() {
 		{name: "Water", prices: map[string]float64{"small": 0.50, "medium": 1.00, "large": 1.25}},
 	}
 
-	for _, item := range menu {
-		fmt.Println(item.name)
-		fmt.Println(strings.Repeat("-", 10))
-		for size, price := range item.prices {
-			fmt.Printf("\t%10s%10.2f\n", size, price) // see https://pkg.go.dev/fmt#hdr-Printing
+	in := bufio.NewReader(os.Stdin)
+
+loop:
+	for {
+		fmt.Println("Please select an option: ")
+		fmt.Println("1) Print Menu")
+		fmt.Println("2) Add Item")
+		fmt.Println("q) Quit")
+		choice, _ := in.ReadString('\n')
+
+		switch strings.TrimSpace(choice) {
+		case "1":
+			for _, item := range menu {
+				fmt.Println(item.name)
+				fmt.Println(strings.Repeat("-", 10))
+				for size, price := range item.prices {
+					fmt.Printf("\t%10s%10.2f\n", size, price) // see https://pkg.go.dev/fmt#hdr-Printing
+				}
+			}
+		case "2":
+			fmt.Println("Please enter the name of the item: ")
+			name, _ := in.ReadString('\n')
+			menu = append(menu, menuItem{name:name, prices:make(map[string]float64)})
+		case "q":
+			fmt.Println("Goodbye!")
+			break loop
+		default:
+			fmt.Println("Invalid option")
 		}
 	}
 }
