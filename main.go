@@ -12,8 +12,8 @@ This is a simple program that will allow the user to select a menu option such a
 1) Print Menu
 */
 
-// The main function prints a menu of items with their corresponding prices.
-// The user can select an option to print the menu.
+// The main function allows the user to interact with a menu by printing it, adding items to it, or
+// quitting the program.
 func main() {
 	type menuItem struct {
 		name string
