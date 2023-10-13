@@ -7,11 +7,6 @@ import (
 	"bufio"
 )
 
-/*
-This is a simple program that will allow the user to select a menu option such as:
-1) Print Menu
-*/
-
 // The main function allows the user to interact with a menu by printing it, adding items, or quitting
 // the program.
 func main() {
