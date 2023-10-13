@@ -20,12 +20,12 @@ var in = bufio.NewReader(os.Stdin) // see https://pkg.go.dev/bufio#NewReader
 func Add() {
 	fmt.Println("Please enter the name of the item: ")
 	name, _ := in.ReadString('\n')
-	menu = append(menu, menuItem{name: name, prices: make(map[string]float64)})
+	data = append(data, menuItem{name: name, prices: make(map[string]float64)})
 }
 
 // Function "Print" prints the menu.
 func Print() {
-	for _, item := range menu {
+	for _, item := range data {
 		fmt.Println(item.name)
 		fmt.Println(strings.Repeat("-", 10))
 		for size, price := range item.prices {
