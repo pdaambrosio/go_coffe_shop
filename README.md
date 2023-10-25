@@ -1,6 +1,6 @@
 # go_coffe_shop
 
-Continuing my journey with Golang by building a simple coffee shop API.
+Continuing my journey with Golang by building a simple coffee shop API with CLI.
 
 ## Getting Started
 
@@ -13,6 +13,4 @@ Continuing my journey with Golang by building a simple coffee shop API.
 
 - Clone this repo
 - Run `go mod download` to download all dependencies
-- Run `go run main.go` to start the server
-
-In this moment it is all, but I will add more information about how to use the API as I develop.
+- Execute `go run coffee_shop.go` to run the app or `go build -o coffeShop main.go` to build the app
